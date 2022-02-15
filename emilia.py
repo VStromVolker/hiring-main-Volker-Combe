@@ -33,9 +33,6 @@ async def task1_greet(name: str, language: str = None) -> str:
     if language == None:
       return f"Hallo {name}, ich bin Emilia."
 
-
-
-
 """
 Task 2 - snake_case to cameCase
 """
@@ -49,11 +46,6 @@ def camelize(key: str):
       strCap = key[iPos + 1].upper()
       key = key[:iPos] + strCap + key[iPos+2:]
       iPos = key.find("_")
-
-    #if key == "company_name":
-    #  key = "companyName"
-    #if key == "is_future_unicorn":
-    #  key = "isFutureUnicorn"
     return key
 
 
@@ -61,7 +53,6 @@ def camelize(key: str):
 async def task2_camelize(data: dict[str, Any]) -> dict[str, Any]:
     """Takes a JSON object and transfroms all keys from snake_case to camelCase."""
     return {camelize(key): value for key, value in data.items()}
-
 
 """
 Task 3 - Handle User Actions
@@ -74,15 +65,12 @@ friends = {
     "Stefan": ["Felix", "Ben", "Philip"],
 }
 
-
 class ActionRequest(BaseModel):
     username: str
     action: str
 
-
 class ActionResponse():
     message: str
-
 
 def handle_call_action(call_action: ActionRequest) -> ActionResponse:
     # Write your code below
@@ -150,7 +138,7 @@ def task3_action(request: ActionRequest) -> ActionResponse:
     else:
         handler = handle_unknown_action(request)
 
-    return handler # (request.action)
+    return handler
 
 
 """
